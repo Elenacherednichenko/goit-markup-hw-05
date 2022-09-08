@@ -7,6 +7,7 @@
   --primary-white-color: #ffffff;
   --primary-background-color: #2f303a;
   --secondary-background-color: #f5f4fa;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -149,6 +150,7 @@ header.container {
   align-items: center;
   color: var(--title-text-color);
   fill: currentColor;
+  transition: color 250ms var(--timing-function);
 }
 
 .mailto:hover,
@@ -177,6 +179,7 @@ header.container {
   align-items: center;
   color: var(--title-text-color);
   fill: currentColor;
+  transition: color 250ms var(--timing-function);
 }
 
 .phone:hover,
@@ -258,6 +261,7 @@ header.container {
   letter-spacing: 0.06em;
   color: var(--primary-white-color);
   background-color: var(--accent-color);
+  transition: background-color 250ms var(--timing-function); color 250ms var(--timing-function);
 }
 
 .button {
@@ -312,10 +316,68 @@ header.container {
   line-height: 1.6;
   color: var(--primary-text-color);
   background-color: var(--secondary-background-color);
+  transition: background-color 250ms var(--timing-function); color 250ms var(--timing-function);
 }
 
 .btn-group:nth-last-child(3) {
   margin-right: 0px;
+}
+
+
+.backdrop {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 528px;
+  height: 581px;
+  padding: 15px;
+  background-color: var(--primary-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--timing-function), opacity 250ms var(--timing-function), visibility 250ms var(--timing-function);
+}
+ 
+.backdrop.is-hidden .modal {
+transform: translate(-50%, -50%) scale(0.8);
+}
+
+.modal-close {
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-white-color);
+  fill: var(--secondary-title-text-color);
+}
+
+.button-modal {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-white-color);
+  top: 8px;
+  right: 8px;
+  position: absolute;
 }
 
 /* наш особенност*/
@@ -420,6 +482,33 @@ section {
   gap: 30px;
 }
 
+.work-ad {
+  position: relative;
+}
+
+.ad {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.ad-name{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
+}
+
 .clients {
   padding-top: 94px;
   padding-bottom: 126px;
@@ -457,6 +546,7 @@ section {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: #afb1b8;
+  transition: color 250ms var(--timing-function);
 }
 
 .clients-link:hover,
@@ -558,6 +648,7 @@ section {
   height: 44px;
   border-radius: 50%;
   fill: #afb1b8;
+  transition: color 250ms var(--timing-function), background-color 250ms var(--timing-function);
 }
 
 .social-net.link:hover,
@@ -628,12 +719,45 @@ section {
 .photo {
   display: inline-block;
   text-decoration: none;
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .photo:hover,
 .photo:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
+
+.gallery-overlay-text{
+  position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+color: var(--primary-white-color);
+background-color: rgba(33, 150, 243, 0.9);
+transform: translateY(100%);
+transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+padding: 63px 24px;
+}
+
+.gallery-overlay {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  text-align: start;
+}
+
+.gallery-picture {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo:hover .gallery-overlay-text,
+.photo:focus .gallery-overlay-text {
+  transform: translateY(0%);
+}
+
 
 .footer {
   padding-top: 60px;
@@ -677,6 +801,7 @@ section {
   font-size: 14px;
   line-height: 1.7;
   color: var(--primary-white-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .mailto-item {
@@ -684,6 +809,7 @@ section {
   line-height: 1.7;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--timing-function);
 }
 
 .mailto-item:hover,
@@ -696,6 +822,7 @@ section {
   font-size: 14px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--timing-function);
 }
 
 .tel-item:hover,
@@ -748,6 +875,7 @@ footer.container {
   height: 44px;
   background-color: rgba(255, 255, 255, 0.1);
   fill: currentColor;
+  transition: color 250ms var(--timing-function);
 }
 
 .join-social-net.link:hover,
