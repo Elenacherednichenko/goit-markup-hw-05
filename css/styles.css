@@ -365,8 +365,8 @@ header.container {
 }
 
 .modal-close {
-  width: 30px;
-  height: 30px;
+  width: 11px;
+  height: 11px;
   background-color: var(--primary-white-color);
   fill: var(--secondary-title-text-color);
 }
@@ -379,7 +379,6 @@ header.container {
   border: 1px solid rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-white-color);
   top: 8px;
   right: 8px;
   position: absolute;
@@ -507,8 +506,7 @@ section {
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
-  padding-top: 27px;
-  padding-bottom: 27px;
+  align-items: center;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--primary-white-color);
@@ -551,7 +549,8 @@ section {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: #afb1b8;
-  transition: fill, border-color 250ms var(--timing-function);
+  transition: fill 250ms var(--timing-function),
+    border-color 250ms var(--timing-function);
 }
 
 .clients-link:hover,
